@@ -19,7 +19,7 @@ namespace DatabaseFirstLINQ
             ProblemTwo();
             ProblemThree();
             ProblemFour();
-            //ProblemFive();
+            ProblemFive();
             //ProblemSix();
             //ProblemSeven();
             //ProblemEight();
@@ -65,9 +65,9 @@ namespace DatabaseFirstLINQ
             {
                 Console.WriteLine(product.Name);
             }
-              
+
             // Write a LINQ query that gets each product where the products price is greater than $150.
-            // Then print the name and price of each product from the above query to the console.
+            //Then print the name and price of each product from the above query to the console.
 
         }
 
@@ -78,15 +78,27 @@ namespace DatabaseFirstLINQ
             {
                 Console.WriteLine(product.Name);
             }
+            Console.WriteLine("===========");
+         
 
         }
 
-        //private void ProblemFive()
-        //{
-        //    Write a LINQ query that gets all of the users who registered BEFORE 2016
-        //     Then print each user's email and registration date to the console.
+        private void ProblemFive()
+        {
+            var usersBeforeDate = _context.Users.Where(u => u.RegistrationDate < DateTime.Parse("01/01/2016").Date) ;
 
-        //}
+            foreach (User user in usersBeforeDate)
+            {
+                Console.WriteLine(user.Email);
+                Console.WriteLine(user.RegistrationDate);
+            }
+           
+
+
+            //    Write a LINQ query that gets all of the users who registered BEFORE 2016
+            //     Then print each user's email and registration date to the console.
+
+        }
 
         //private void ProblemSix()
         //{
