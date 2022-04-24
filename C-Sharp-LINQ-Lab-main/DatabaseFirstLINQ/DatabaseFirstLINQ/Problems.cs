@@ -21,7 +21,7 @@ namespace DatabaseFirstLINQ
             ProblemFour();
             ProblemFive();
             ProblemSix();
-            //ProblemSeven();
+            ProblemSeven();
             //ProblemEight();
             //ProblemNine();
             //ProblemTen();
@@ -104,7 +104,7 @@ namespace DatabaseFirstLINQ
         {
 
             var usersBeforeDate = _context.Users.Where(u => u.RegistrationDate > DateTime.Parse("12/31/2016").Date && u.RegistrationDate < DateTime.Parse("01/01/2018").Date);
-            Console.WriteLine("===========");
+          
             foreach (User user in usersBeforeDate)
             {
                 Console.WriteLine(user.Email);
@@ -116,18 +116,19 @@ namespace DatabaseFirstLINQ
 
         }
 
-    // <><><><><><><><> R Actions(Read) with Foreign Keys<><><><><><><><><>
+        // <><><><><><><><> R Actions(Read) with Foreign Keys<><><><><><><><><>
 
-    //private void ProblemSeven()
-    //{
-    //    Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
-    //     Then print the users email and role name to the console.
-    //    var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
-    //    foreach (UserRole userRole in customerUsers)
-    //    {
-    //        Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
-    //    }
-    //}
+        private void ProblemSeven()
+        {
+            Console.WriteLine("===========================");
+            //    Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
+            //     Then print the users email and role name to the console.
+            var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
+            foreach (UserRole userRole in customerUsers)
+            {
+                Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
+            }
+    }
 
     //private void ProblemEight()
     //{
